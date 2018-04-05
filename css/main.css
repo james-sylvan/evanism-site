@@ -97,21 +97,150 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
 
+a {
+  text-decoration: none;
+}
 
+.container {
+  height: 100%;
+  width: 100%;
+}
 
+.header {
+  position: absolute;
+  top: 0%;
+  height: 15%;
+  width: 100%;
+  padding-top: 32px;
+}
 
+.header-sec-1 {
+  float: left;
+  width: 33%;
+  height: 100%;
+}
 
+.header-sec-2 {
+  margin-left: 33%;
+  width: 33%;
+  height: 100%;
+}
 
+.first-third {
+  float: left;
+  width: 20%;
+  height: 100%;
+  margin-left: 20%;
+  padding-top: 32px;
+}
 
+.second-third {
+  float: left;
+  width: 20%;
+  height: 100%;
+  padding-top: 32px;
+}
 
+.third-third {
+  float: left;
+  width: 20%;
+  height: 100%;
+  margin-right: 20%;
+  padding-top: 32px;
+}
 
+.body-text {
+  color: aqua;
+  font-family: "Press Start 2P", cursive;
+  margin: auto;
+  font-size:16px;
+}
 
+.variable-text {
+  color: orange;
+  font-family: "Press Start 2P", cursive;
+  margin: auto;
+  font-size:16px;
+}
 
+.points-title {
+  color: red;
+  font-family: "Press Start 2P", cursive;
+  margin: auto;
+  font-size:16px;
+}
 
+.points {
+  color: white;
+  font-family: "Press Start 2P", cursive;
+  margin: auto;
+  font-size:16px;
+}
 
+.main {
+  position: absolute;
+  top: 20%;
+  height: 70%;
+  width: 100%;
+  padding-top: 32px;
+}
 
+.footer {
+  top: 90%;
+  position: absolute;
+  height: 10%;
+  width: 100%;
+}
 
+.intro {
+  position: absolute;
+  top: 40%;
+  height: 60%;
+  width: 100%;
+  background-color: black;
+}
+
+@-webkit-keyframes typing {
+    from { width: 0 }
+    to { width:17em }
+}
+
+@-moz-keyframes typing {
+    from { width: 0 }
+    to { width:17em }
+}
+
+@-webkit-keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white }
+}
+
+@-moz-keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white }
+}
+
+.typed-text {
+  color: white;
+  font-family: "Press Start 2P", cursive;
+  width: 17em;
+  margin: auto;
+  font-size:32px;
+  white-space:nowrap;
+  overflow:hidden;
+  border-right: .1em solid black;
+
+  -webkit-animation: typing 5s steps(17, end), /* # of steps = # of characters */
+                      blink-caret 1s step-end infinite;
+  -moz-animation: typing 5s steps(17, end), /* # of steps = # of characters */
+                      blink-caret 1s step-end infinite;
+}
 
 /* ==========================================================================
    Helper classes
