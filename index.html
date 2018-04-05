@@ -24,6 +24,7 @@
         <div class="container">
           <div class="intro">
             <a href="welcome.html"><p class="typed-text">Ready Player 111?<span>&nbsp;</span></p></a>
+            <a href="welcome.html"><p class="press-start" style="margin-top: 32px; width: 11em; display: none;">PRESS START</p></a>
           </div>
         </div>
 
@@ -39,5 +40,12 @@
             ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
         </script>
         <script src="https://www.google-analytics.com/analytics.js" async defer></script>
-    </body>
+        <script>
+          $(document).ready(function() {
+            setTimeout(function() {
+              $(".press-start").show();
+            }, 15000);
+          });
+        </script>
+  </body>
 </html>
