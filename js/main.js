@@ -21,7 +21,6 @@ var playersData = {
   "Jaraxxus Christ": 1,
   "Chaos Gamer": 7,
   "Hoola Hoops": 2,
-  "Debbie Cakes": 1,
   "Adam Green": 9,
   "TheStonerKoala": 1,
   "Luvanani": 4,

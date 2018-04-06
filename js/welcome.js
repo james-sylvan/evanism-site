@@ -9,7 +9,13 @@ ref.once('value', function(snapshot) {
     for (var count in scoreboard) {
       index = count;
       var player = scoreboard[count];
-      if (player.points >= childData.points) {
+      if (player.points == childData.points) {
+        if (player.lastPointsTimestamp < childData.lastPointsTimestamp) {
+          continue;
+        } else {
+          break;
+        }
+      } else if (player.points > childData.points) {
         continue;
       } else {
         break;
@@ -18,22 +24,16 @@ ref.once('value', function(snapshot) {
     scoreboard.splice(index, 0, childData);
   });
 
-  var first = scoreboard[0];
-  var second = scoreboard[1];
-  var third = scoreboard[2];
-  var fourth = scoreboard[3];
-  var fifth = scoreboard[4];
-
-  $("#score-first").text(first.points);
-  $("#name-first").text(first.name);
-  $("#score-second").text(second.points);
-  $("#name-second").text(second.name);
-  $("#score-third").text(third.points);
-  $("#name-third").text(third.name);
-  $("#score-fourth").text(fourth.points);
-  $("#name-fourth").text(fourth.name);
-  $("#score-fifth").text(fifth.points);
-  $("#name-fifth").text(fifth.name);
+  $("#score-table").append("<li><div class=\"first-third\"><p class=\"body-text\">RANK</p></div><div class=\"second-third\"><p class=\"body-text\" style=\"margin: auto; width: 5em;\">SCORE</p></div><div class=\"third-third\"><p class=\"body-text\" style=\"text-align: right;\">NAME</p></div></li>");
+  
+  var index;
+  for (index = 0; index < 111; index++) {
+    if (index >= scoreboard.length) {
+      break;
+    }
+    var player = scoreboard[index];
+    $("#score-table").append("<li><div class=\"first-third\"><p class=\"variable-text\">" + index + "ST</p></div><div class=\"second-third\"><p class=\"variable-text\" style=\"margin: auto; width: 1em;\">" + player.points + "</p></div><div class=\"third-third\"><p class=\"variable-text\" style=\"text-align: right;\">" + player.name + "</p></div></li>");
+  }
 
   $("#scoreboard").show();
 });
