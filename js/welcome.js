@@ -49,6 +49,14 @@ ref.once('value', function(snapshot) {
     $("#score-table").append("<li><div class=\"first-third\"><p class=\"variable-text\">" + place + "</p></div><div class=\"second-third\"><p class=\"variable-text\" style=\"margin: auto; width: 1em;\">" + player.points + "</p></div><div class=\"third-third\"><p class=\"variable-text\" style=\"text-align: right;\">" + player.name + "</p></div></li>");
   }
 
+  var highPlayer = scoreboard[0];
+  console.log(highPlayer);
+  var s = "00000" + highPlayer.points;
+  console.log(s);
+  var highScore = s.substr(s.length-6);
+  console.log(highScore);
+  $("#high-score-points").text(highScore);
+
   $("#scoreboard").show();
 });
 
