@@ -107,8 +107,6 @@ Author's custom styles
 ========================================================================== */
 
 html, body {
-  height: 100%;
-  width: 100%;
   background-color: black;
 }
 
@@ -116,16 +114,16 @@ a {
   text-decoration: none;
 }
 
-.container {
-  height: 100%;
-  width: 100%;
-}
-
 .header {
   position: absolute;
   top: 0%;
   height: 15%;
   width: 100%;
+  padding-top: 32px;
+}
+
+.header-content {
+  height: 15%;
   padding-top: 32px;
 }
 
@@ -146,14 +144,14 @@ a {
   width: 20%;
   height: 100%;
   margin-left: 20%;
-  padding-top: 32px;
+  padding-top: 16px;
 }
 
 .second-third {
   float: left;
   width: 20%;
   height: 100%;
-  padding-top: 32px;
+  padding-top: 16px;
 }
 
 .third-third {
@@ -161,7 +159,7 @@ a {
   width: 20%;
   height: 100%;
   margin-right: 20%;
-  padding-top: 32px;
+  padding-top: 16px;
 }
 
 .press-start {
@@ -209,11 +207,9 @@ a {
   padding-top: 32px;
 }
 
-.footer {
-  top: 90%;
-  position: absolute;
-  height: 10%;
-  width: 100%;
+.content {
+  padding-top: 32px;
+  margin-bottom: 32px;
 }
 
 .intro {

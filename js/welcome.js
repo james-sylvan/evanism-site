@@ -32,7 +32,21 @@ ref.once('value', function(snapshot) {
       break;
     }
     var player = scoreboard[index];
-    $("#score-table").append("<li><div class=\"first-third\"><p class=\"variable-text\">" + index + "ST</p></div><div class=\"second-third\"><p class=\"variable-text\" style=\"margin: auto; width: 1em;\">" + player.points + "</p></div><div class=\"third-third\"><p class=\"variable-text\" style=\"text-align: right;\">" + player.name + "</p></div></li>");
+    var place = "";
+    var i = index + 1;
+    var j = i % 10,
+        k = i % 100;
+    if (j == 1 && k != 11) {
+      place = i + "ST";
+    } else if (j == 2 && k != 12) {
+      place = i + "ND";
+    } else if (j == 3 && k != 13) {
+      place = i + "RD";
+    } else {
+      place = i + "TH";
+    }
+
+    $("#score-table").append("<li><div class=\"first-third\"><p class=\"variable-text\">" + place + "</p></div><div class=\"second-third\"><p class=\"variable-text\" style=\"margin: auto; width: 1em;\">" + player.points + "</p></div><div class=\"third-third\"><p class=\"variable-text\" style=\"text-align: right;\">" + player.name + "</p></div></li>");
   }
 
   $("#scoreboard").show();
