@@ -18,6 +18,23 @@ ref.once('value', function(snapshot) {
     scoreboard.splice(index, 0, childData);
   });
 
-  console.log(scoreboard);
+  var first = scoreboard[0];
+  var second = scoreboard[1];
+  var third = scoreboard[2];
+  var fourth = scoreboard[3];
+  var fifth = scoreboard[4];
+
+  $("#score-first").text(first.points);
+  $("#name-first").text(first.name);
+  $("#score-second").text(second.points);
+  $("#name-second").text(second.name);
+  $("#score-third").text(third.points);
+  $("#name-third").text(third.name);
+  $("#score-fourth").text(fourth.points);
+  $("#name-fourth").text(fourth.name);
+  $("#score-fifth").text(fifth.points);
+  $("#name-fifth").text(fifth.name);
+
+  $("#scoreboard").show();
 });
 
