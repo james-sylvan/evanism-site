@@ -16,14 +16,14 @@ firebase.auth().onAuthStateChanged(function(user) {
     players.child(user.uid).once('value').then(function(snapshot) {
       if (snapshot.val() !== null) {
         // User logged in
-        window.location.href = "http://111interactiveentertainment.com/welcome.html"
+        window.location.href = "welcome.html"
       } else {
         // User signed up
         players.child(user.uid).set({
           name: user.email,
           points: 0
         });
-        window.location.href = "http://111interactiveentertainment.com/name.html"
+        window.location.href = "name.html"
       }
     });
   } else {
@@ -107,14 +107,14 @@ $(document).ready(function() {
       players.child(user.uid).once('value').then(function(snapshot) {
         if (snapshot.val() !== null) {
           // User logged in
-          window.location.href = "http://111interactiveentertainment.com/welcome.html"
+          window.location.href = "welcome.html"
         } else {
           // User signed up
           players.child(user.uid).set({
             name: user.displayName,
             points: 0
           });
-          window.location.href = "http://111interactiveentertainment.com/welcome.html"
+          window.location.href = "welcome.html"
         }
       });
 

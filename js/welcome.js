@@ -67,7 +67,9 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
     console.log(user);
-
+    $("#login-link").text("-> CLAIM EASTER EGG <-");
+    $("#login-link").css("width", "22em");
+    $("#login-link").attr("href", "password.html")
   } else {
     // No user is signed in.
     console.log("no user");
