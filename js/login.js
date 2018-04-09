@@ -1,8 +1,8 @@
 var toggle = false;
 
 function validateEmail(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
 }
 
 var players = database.ref("players");
@@ -11,7 +11,21 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
     console.log(user);
-    console.log(user.id);
+    console.log(user.uid);
+
+    players.child(user.uid).once('value').then(function(snapshot) {
+      if (snapshot.val() !== null) {
+        // User logged in
+        window.location.href = "http://111interactiveentertainment.com/welcome.html"
+      } else {
+        // User signed up
+        players.child(user.uid).set({
+          name: user.email,
+          points: 0
+        });
+        window.location.href = "http://111interactiveentertainment.com/name.html"
+      }
+    });
   } else {
     // No user is signed in.
     console.log("no user");
@@ -89,8 +103,21 @@ $(document).ready(function() {
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
-      // ...
-      console.log(user);
+
+      players.child(user.uid).once('value').then(function(snapshot) {
+        if (snapshot.val() !== null) {
+          // User logged in
+          window.location.href = "http://111interactiveentertainment.com/welcome.html"
+        } else {
+          // User signed up
+          players.child(user.uid).set({
+            name: user.displayName,
+            points: 0
+          });
+          window.location.href = "http://111interactiveentertainment.com/welcome.html"
+        }
+      });
+
     }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -101,6 +128,7 @@ $(document).ready(function() {
       var credential = error.credential;
       // ...
       console.log(errorMessage);
+      alert(errorMessage);
     });
   });
 

@@ -1,4 +1,6 @@
 var ref = database.ref('players')
+
+// Set High Scores
 var scoreboard = []
 
 ref.once('value', function(snapshot) {
@@ -58,5 +60,17 @@ ref.once('value', function(snapshot) {
   $("#high-score-points").text(highScore);
 
   $("#scoreboard").show();
+});
+
+// Set user logged in
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    console.log(user);
+
+  } else {
+    // No user is signed in.
+    console.log("no user");
+  }
 });
 
