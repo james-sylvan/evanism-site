@@ -13,16 +13,23 @@ ref.once('value', function(snapshot) {
       var player = scoreboard[count];
       if (player.points == childData.points) {
         if (player.lastPointsTimestamp < childData.lastPointsTimestamp) {
+          if (count == scoreboard.length - 1) {
+            index++;
+          }
           continue;
         } else {
           break;
         }
       } else if (player.points > childData.points) {
+        if (count == scoreboard.length - 1) {
+          index++;
+        }
         continue;
       } else {
         break;
       }
     }
+    console.log("insert at " + index);
     scoreboard.splice(index, 0, childData);
   });
 
