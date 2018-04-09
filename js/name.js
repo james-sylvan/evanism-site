@@ -1,4 +1,9 @@
 var players = database.ref("players");
+
+function scoresLoaded() {
+
+}
+
 var userId = ""
 
 firebase.auth().onAuthStateChanged(function(user) {
