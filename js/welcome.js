@@ -39,6 +39,9 @@ firebase.auth().onAuthStateChanged(function(user) {
   } else {
     // No user is signed in.
     console.log("no user");
+    $("#login-link").text("-> START PLAYING <-");
+    $("#login-link").css("width", "19em");
+    $("#login-link").attr("href", "login.html")
   }
 });
 
