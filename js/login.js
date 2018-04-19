@@ -23,7 +23,10 @@ firebase.auth().onAuthStateChanged(function(user) {
         window.location.href = "welcome.html"
       } else {
         // User signed up
+        var d = new Date();
+        var seconds = d.getTime() / 1000;
         players.child(user.uid).set({
+          lastPointsTimestamp: seconds,
           name: user.email,
           points: 0
         });
