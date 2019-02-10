@@ -1,6 +1,6 @@
 
 function scoresLoaded() {
-  $("#score-table").append("<li><div class=\"first-third\"><p class=\"body-text\">RANK</p></div><div class=\"second-third\"><p class=\"body-text\" style=\"margin: auto; width: 5em;\">SCORE</p></div><div class=\"third-third\"><p class=\"body-text\" style=\"text-align: right;\">NAME</p></div></li>");
+  $("#score-table").append("<li class=\"row\"><div class=\"col-lg-4 col-2\"><p class=\"body-text\">RANK</p></div><div class=\"col-lg-4 col-3\"><p class=\"body-text text-center\">SCORE</p></div><div class=\"col-lg-4 col-7\"><p class=\"body-text text-right\">NAME</p></div></li>");
 
   var index;
   for (index = 0; index < 111; index++) {
@@ -22,7 +22,7 @@ function scoresLoaded() {
       place = i + "TH";
     }
 
-    $("#score-table").append("<li><div class=\"first-third\"><p class=\"variable-text\">" + place + "</p></div><div class=\"second-third\"><p class=\"variable-text\" style=\"margin: auto; width: 1em;\">" + player.points + "</p></div><div class=\"third-third\"><p class=\"variable-text\" style=\"text-align: right;\">" + player.name + "</p></div></li>");
+    $("#score-table").append("<li class=\"row\"><div class=\"col-lg-4 col-2\"><p class=\"variable-text\">" + place + "</p></div><div class=\"col-lg-4 col-3\"><p class=\"variable-text text-center\">" + player.points + "</p></div><div class=\"col-lg-4 col-7\"><p class=\"variable-text text-right\">" + player.name + "</p></div></li>");
   }
 
   $("#scoreboard").show();
@@ -36,6 +36,17 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#login-link").text("-> CLAIM EASTER EGG <-");
     $("#login-link").css("width", "22em");
     $("#login-link").attr("href", "password.html")
+    firebase.database().ref('/players/' + user.uid).once('value').then(function(snapshot) {
+      if (snapshot.exists()) {
+        console.log(snapshot.val().name);
+        var username = snapshot.val().name.toUpperCase();
+        username = username.replace(/ /g, '\xA0');
+        $("#username").text(username);
+        var userscore = "00000" + snapshot.val().points;
+        userscore = userscore.substr(userscore.length-6);
+        $("#userpoints").text(userscore);
+      }
+    });
   } else {
     // No user is signed in.
     console.log("no user");

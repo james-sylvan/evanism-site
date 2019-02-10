@@ -127,39 +127,9 @@ a {
   padding-top: 32px;
 }
 
-.header-sec-1 {
-  float: left;
-  width: 33%;
-  height: 100%;
-}
-
-.header-sec-2 {
-  margin-left: 33%;
-  width: 33%;
-  height: 100%;
-}
-
-.first-third {
-  float: left;
-  width: 20%;
-  height: 100%;
-  margin-left: 20%;
-  padding-top: 16px;
-}
-
-.second-third {
-  float: left;
-  width: 20%;
-  height: 100%;
-  padding-top: 16px;
-}
-
-.third-third {
-  float: left;
-  width: 20%;
-  height: 100%;
-  margin-right: 20%;
-  padding-top: 16px;
+.score-table {
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 .press-start {
@@ -181,21 +151,19 @@ a {
 .variable-text {
   color: orange;
   font-family: "Press Start 2P", cursive;
-  margin: auto;
   font-size:16px;
+  margin-bottom: 0;
 }
 
 .points-title {
   color: red;
   font-family: "Press Start 2P", cursive;
-  margin: auto;
   font-size:16px;
 }
 
 .points {
   color: white;
   font-family: "Press Start 2P", cursive;
-  margin: auto;
   font-size:16px;
 }
 
