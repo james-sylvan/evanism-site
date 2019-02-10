@@ -2,6 +2,22 @@ function scoresLoaded() {
 
 }
 
+function loginChanged(user) {
+  if (user) {
+    // User is signed in.
+    playersRef.child(user.uid).once('value').then(function(snapshot) {
+      if (snapshot.exists()) {
+        var username = snapshot.val().name.toUpperCase();
+        username = username.replace(/ /g, '\xA0');
+        $("#username").text(username);
+        var userscore = "00000" + snapshot.val().points;
+        userscore = userscore.substr(userscore.length-6);
+        $("#userpoints").text(userscore);
+      }
+    });
+  }
+}
+
 $(document).ready(function() {
   $("#submit").click(function() {
     if (firebase.auth().currentUser !== null) {

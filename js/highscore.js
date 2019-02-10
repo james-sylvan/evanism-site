@@ -1,9 +1,7 @@
-var ref = database.ref('players')
-
 // Set High Scores
 var scoreboard = []
 
-ref.once('value', function(snapshot) {
+playersRef.once('value', function(snapshot) {
   snapshot.forEach(function(childSnapshot) {
     var childKey = childSnapshot.key;
     var childData = childSnapshot.val();

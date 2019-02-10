@@ -28,17 +28,14 @@ function scoresLoaded() {
   $("#scoreboard").show();
 }
 
-// Set user logged in
-firebase.auth().onAuthStateChanged(function(user) {
+function loginChanged(user) {
   if (user) {
     // User is signed in.
-    console.log(user);
     $("#login-link").text("-> CLAIM EASTER EGG <-");
     $("#login-link").css("width", "22em");
     $("#login-link").attr("href", "password.html")
-    firebase.database().ref('/players/' + user.uid).once('value').then(function(snapshot) {
+    playersRef.child(user.uid).once('value').then(function(snapshot) {
       if (snapshot.exists()) {
-        console.log(snapshot.val().name);
         var username = snapshot.val().name.toUpperCase();
         username = username.replace(/ /g, '\xA0');
         $("#username").text(username);
@@ -49,10 +46,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     });
   } else {
     // No user is signed in.
-    console.log("no user");
     $("#login-link").text("-> START PLAYING <-");
     $("#login-link").css("width", "19em");
     $("#login-link").attr("href", "login.html")
   }
-});
-
+}

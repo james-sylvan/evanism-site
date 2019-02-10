@@ -4,20 +4,10 @@ function scoresLoaded() {
 
 }
 
-function validateEmail(email) {
-  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
-}
-
-var players = database.ref("players");
-
-firebase.auth().onAuthStateChanged(function(user) {
+function loginChanged(user) {
   if (user) {
     // User is signed in.
-    console.log(user);
-    console.log(user.uid);
-
-    players.child(user.uid).once('value').then(function(snapshot) {
+    playersRef.child(user.uid).once('value').then(function(snapshot) {
       if (snapshot.val() !== null) {
         // User logged in
         window.location.href = "welcome.html"
@@ -25,7 +15,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         // User signed up
         var d = new Date();
         var seconds = d.getTime() / 1000;
-        players.child(user.uid).set({
+        playersRef.child(user.uid).set({
           lastPointsTimestamp: seconds,
           name: user.email,
           points: 0
@@ -33,11 +23,13 @@ firebase.auth().onAuthStateChanged(function(user) {
         window.location.href = "name.html"
       }
     });
-  } else {
-    // No user is signed in.
-    console.log("no user");
   }
-});
+}
+
+function validateEmail(email) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
 
 $(document).ready(function() {
   $("#toggle").click(function() {
@@ -111,13 +103,13 @@ $(document).ready(function() {
       // The signed-in user info.
       var user = result.user;
 
-      players.child(user.uid).once('value').then(function(snapshot) {
+      playersRef.child(user.uid).once('value').then(function(snapshot) {
         if (snapshot.val() !== null) {
           // User logged in
           window.location.href = "welcome.html"
         } else {
           // User signed up
-          players.child(user.uid).set({
+          playersRef.child(user.uid).set({
             name: user.displayName,
             points: 0
           });

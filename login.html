@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -27,13 +28,19 @@
     <!-- Add your site or application content here -->
     <div class="container">
       <div class="header-content">
-        <div class="header-sec-1">
-          <p class="points-title" style="width: 3em;">1UP</p>
-          <p class="points" style="width: 6em;">000111</p>
-        </div>
-        <div class="header-sec-2">
-          <p class="points-title" style="width: 10em;">HIGH SCORE</p>
-          <p id="high-score-points" class="points" style="width: 6em;">000000<p>
+        <div class="row">
+          <div class="col-4">
+            <p class="points-title text-center">1UP</p>
+            <p class="points text-center">000111</p>
+          </div>
+          <div class="col-4">
+            <p class="points-title text-center">HIGH&nbsp;SCORE</p>
+            <p id="high-score-points" class="points text-center">000000</p>
+          </div>
+          <div class="col-4">
+            <p id="username" class="points-title text-center">USERNAME</p>
+            <p id="userpoints" class="points text-center">000000</p>
+          </div>
         </div>
       </div>
       <div class="content">
@@ -71,6 +78,7 @@
     <script src="js/main.js"></script>
     <script src="js/login.js"></script>
     <script src="js/highscore.js"></script>
+    <script src="js/auth.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
     <script>
